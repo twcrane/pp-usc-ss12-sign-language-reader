@@ -1,4 +1,4 @@
-Sign Language Reader is a problem that can translate sign language, from a video or web camera, into text, other actions in real-time.
+Sign Language Reader is a project that can translate sign language, from a video or web camera, into text and other actions in real-time.
 
 == Usability ==
 
@@ -14,7 +14,7 @@ Adding Multiple Techniques / Voting / Support
 Text to speech / Integration with GUI
 Mobile Interface.
 
-
+||table||cell1||
 
 == Future Work == 
 
