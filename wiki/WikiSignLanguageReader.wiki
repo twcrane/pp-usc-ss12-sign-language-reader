@@ -1,26 +1,48 @@
-Sign Language Reader is a project that can translate sign language, from a video or web camera, into text and other actions in real-time.
+== Overview==
+------------------------------------------------------------------------------------------
+
+*Sign Language Reader is a project that can translate sign language, from a video or web camera, into text and other actions in real-time.
 
 == Usability ==
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
 
-Visually Impaired can use for sign based commands / keyboard replacement.
+*Visually Impaired can use for sign based commands / keyboard replacement.
 Dumb people can use to communicate by adding a Text to Speech Feature to communicate over VOIP.
-Elderly people for convenience.
+*Elderly people for convenience.
 
 == Features ==
+------------------------------------------------------------------------------------------
 
-Maintaining database of features ( synching features).
-Training / Incremental
-Adding Multiple Techniques / Voting / Support
-Text to speech / Integration with GUI
-Mobile Interface.
-
-||table||cell1||
-||cell2||cell3||
+*Maintaining database of features ( synching features).
+*Training / Incremental
+*Adding Multiple Techniques / Voting / Support
+*Text to speech / Integration with GUI
+*Mobile Interface.
 
 == Future Work == 
+------------------------------------------------------------------------------------------
 
-All type of Expressions 
-Schale Invariant/ Rotation Invariant
-Sequence Identification in a Finite Automata
-Combinations of facial & hold expressions.
+*All type of Expressions 
+*Scale Invariant/ Rotation Invariant
+*Sequence Identification in a Finite Automata
+*Combinations of facial & hold expressions.
+
+==Architecture & Design==
+------------------------------------------------------------------------------------------
+
+sdjfhasghdfrugbvtk geriutvberutvbgreigf rkeutvbsd kfgbeivt gwertqpa;eytiuertyg
+ufvbrew gfhbevtger higebsytg e;roitybve;rlig
+fwev gfrakgbyergha;fhjksgbviudfhvgidf
+
+==Team Members==
+------------------------------------------------------------------------------------------
+
+*Mentor: Ojas Mulay: ojasmulay at gmail dot com
+
+*Anurag Biyani: biyani dot usc at edu
+*Parth : 
+*Prakhar Garg: gargp at usc dot usc
+*Mayank Misra: mmisra at usc dot edu
+*Ankit Sharma: ankit at usc dot usc
+*Umang Jain: ujain at usc dot usc
+*Nishkam Agrawal: nishkama at usc dot usc
