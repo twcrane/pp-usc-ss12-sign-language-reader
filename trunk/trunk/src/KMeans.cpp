@@ -1,5 +1,5 @@
 #include "KMeans.h"
-
+#include "BlobRecognition/BlobRecognizer.h"
     /**
      * ReadDirectories
      */
@@ -41,6 +41,14 @@
 	 * ProcessImage
 	 */
 	IplImage* KMeans::ProcessImage(IplImage* im_gray){
+
+		 //BlobRecognizer b;
+		 // im_gray = b.Runit(im_gray);
+
+		 //cvNamedWindow("sdf");
+		 //cvShowImage("sdf",im_gray);
+		 //cvWaitKey();
+		 //cvDestroyAllWindows();
 
 		 IplImage *resized = cvCreateImage(cvSize(IMGWIDTH,IMGHEIGHT),IPL_DEPTH_8U,1);
 		 cvResize(im_gray,resized,0);
