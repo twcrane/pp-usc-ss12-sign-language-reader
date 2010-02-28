@@ -1,6 +1,7 @@
 Sign Language Reader is a project that can translate sign language, from a video or web camera, into text and other actions in real-time.
 
 == Usability ==
+--------------------------------------------------------------------------------------------
 
 Visually Impaired can use for sign based commands / keyboard replacement.
 Dumb people can use to communicate by adding a Text to Speech Feature to communicate over VOIP.
