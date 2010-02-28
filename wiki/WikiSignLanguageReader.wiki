@@ -1,7 +1,7 @@
 == Overview==
 ------------------------------------------------------------------------------------------
 
-Sign Language Reader is a project that can translate sign language, from a video or web camera, into text and other actions in real-time.
+Sign language is used all over the world by the hearing-impaired to communicate with each other and with those that hear. Sign Language Reader is a project that can translate sign language, from a video or web camera, into text or speech and other actions in real-time.
 
 == Usability ==
 ------------------------------------------------------------------------------------------
@@ -33,6 +33,12 @@ Sign Language Reader is a project that can translate sign language, from a video
 sdjfhasghdfrugbvtk geriutvberutvbgreigf rkeutvbsd kfgbeivt gwertqpa;eytiuertyg
 ufvbrew gfhbevtger higebsytg e;roitybve;rlig
 fwev gfrakgbyergha;fhjksgbviudfhvgidf
+
+==References==
+------------------------------------------------------------------------------------------
+
+OpenCV (Open Source Computer Vision) is a library of programming functions for real time computer vision. 
+  *[http://opencv.willowgarage.com/wiki/]
 
 ==Team Members==
 ------------------------------------------------------------------------------------------
