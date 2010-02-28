@@ -6,7 +6,7 @@ Sign language is used all over the world by the hearing-impaired to communicate 
 == Usability ==
 ------------------------------------------------------------------------------------------
 
-  * Visually Impaired can use for sign based commands / keyboard replacement.
+  * Visually Impaired can use sign language to operate their machines using sign based commands for keyboard replacement.
   * Dumb people can use to communicate by adding a Text to Speech Feature to communicate     over VOIP.
   * Elderly people for convenience.
 
@@ -19,6 +19,7 @@ Sign language is used all over the world by the hearing-impaired to communicate 
   * Text to speech / Integration with GUI.
   * Mobile Interface.
 
+
 == Future Work == 
 ------------------------------------------------------------------------------------------
 
@@ -26,7 +27,7 @@ Sign language is used all over the world by the hearing-impaired to communicate 
   * Scale Invariant/ Rotation Invariant.
   * Sequence Identification in a Finite Automata.
   * Combinations of facial & hold expressions.
-
+ 
 ==Architecture & Design==
 ------------------------------------------------------------------------------------------
 
