@@ -13,7 +13,9 @@
 using namespace std;
 
 int main() {
-	CvCapture* capture = cvCaptureFromCAM( CV_CAP_ANY );
+
+
+	  CvCapture* capture = cvCaptureFromCAM( CV_CAP_ANY );
 	  if( !capture ) {
 	    fprintf( stderr, "ERROR: capture is NULL \n" );
 	    getchar();
@@ -21,7 +23,7 @@ int main() {
 	  }
 
 	  // Create a window in which the captured images will be presented
-	  cvNamedWindow( "mywindow", CV_WINDOW_AUTOSIZE );
+	  cvNamedWindow("mywindow", CV_WINDOW_AUTOSIZE);
 
 	  // Show the image captured from the camera in the window and repeat
 	  while( 1 ) {
@@ -32,12 +34,9 @@ int main() {
 	      getchar();
 	      break;
 	    }
-
+	    // New Window
 	    cvShowImage( "mywindow", frame );
-	    // Do not release the frame!
 
-	    //If ESC key pressed, Key=0x10001B under OpenCV 0.9.7(linux version),
-	    //remove higher bits using AND operator
 	    if( (cvWaitKey(10) & 255) == 27 ) break;
 	  }
 
@@ -46,5 +45,27 @@ int main() {
 	  cvDestroyWindow( "mywindow" );
 
 	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+
+
+	/////////////////////////////////// BOOSTING /////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//////////////////////////////////////////////////////////////////////////////
+
+
+
+
 	return 0;
 }
