@@ -6,9 +6,9 @@ Sign Language Reader is a project that can translate sign language, from a video
 == Usability ==
 ------------------------------------------------------------------------------------------
 
-*  Visually Impaired can use for sign based commands / keyboard replacement.
-*  Dumb people can use to communicate by adding a Text to Speech Feature to communicate over VOIP.
-*  Elderly people for convenience.
+  * Visually Impaired can use for sign based commands / keyboard replacement.
+  * Dumb people can use to communicate by adding a Text to Speech Feature to communicate     over VOIP.
+  * Elderly people for convenience.
 
 == Features ==
 ------------------------------------------------------------------------------------------
