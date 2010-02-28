@@ -13,19 +13,19 @@ Sign Language Reader is a project that can translate sign language, from a video
 == Features ==
 ------------------------------------------------------------------------------------------
 
-* Maintaining database of features ( synching features).
-* Training / Incremental.
-* Adding Multiple Techniques / Voting / Support.
-* Text to speech / Integration with GUI.
-* Mobile Interface.
+  * Maintaining database of features ( synching features).
+  * Training / Incremental.
+  * Adding Multiple Techniques / Voting / Support.
+  * Text to speech / Integration with GUI.
+  * Mobile Interface.
 
 == Future Work == 
 ------------------------------------------------------------------------------------------
 
-* All type of Expressions.
-* Scale Invariant/ Rotation Invariant.
-* Sequence Identification in a Finite Automata.
-* Combinations of facial & hold expressions.
+  * All type of Expressions.
+  * Scale Invariant/ Rotation Invariant.
+  * Sequence Identification in a Finite Automata.
+  * Combinations of facial & hold expressions.
 
 ==Architecture & Design==
 ------------------------------------------------------------------------------------------
@@ -37,12 +37,12 @@ fwev gfrakgbyergha;fhjksgbviudfhvgidf
 ==Team Members==
 ------------------------------------------------------------------------------------------
 
-* Mentor: Ojas Mulay: ojasmulay at gmail dot com
+  * Mentor: Ojas Mulay: ojasmulay at gmail dot com
 
-* Anurag Biyani: biyani dot usc at edu
-* Parth : 
-* Prakhar Garg: gargp at usc dot edu
-* Mayank Misra: mmisra at usc dot edu
-* Ankit Sharma: ankit at usc dot edu
-* Umang Jain: ujain at usc dot edu
-* Nishkam Agrawal: nishkama at usc dot edu
+  * Anurag Biyani: biyani at usc dot edu
+  * Parth Patel: parthpat at usc dot edu 
+  * Prakhar Garg: gargp at usc dot edu
+  * Mayank Misra: mmisra at usc dot edu
+  * Ankit Sharma: ankit at usc dot edu
+  * Umang Jain: ujain at usc dot edu
+  * Nishkam Agrawal: nishkama at usc dot edu
