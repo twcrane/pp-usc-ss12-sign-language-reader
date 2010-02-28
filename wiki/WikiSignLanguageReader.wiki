@@ -14,17 +14,17 @@ Sign Language Reader is a project that can translate sign language, from a video
 ------------------------------------------------------------------------------------------
 
 * Maintaining database of features ( synching features).
-* Training / Incremental
-* Adding Multiple Techniques / Voting / Support
-* Text to speech / Integration with GUI
+* Training / Incremental.
+* Adding Multiple Techniques / Voting / Support.
+* Text to speech / Integration with GUI.
 * Mobile Interface.
 
 == Future Work == 
 ------------------------------------------------------------------------------------------
 
-* All type of Expressions 
-* Scale Invariant/ Rotation Invariant
-* Sequence Identification in a Finite Automata
+* All type of Expressions.
+* Scale Invariant/ Rotation Invariant.
+* Sequence Identification in a Finite Automata.
 * Combinations of facial & hold expressions.
 
 ==Architecture & Design==
