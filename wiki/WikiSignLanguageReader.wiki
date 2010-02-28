@@ -15,6 +15,7 @@ Text to speech / Integration with GUI
 Mobile Interface.
 
 ||table||cell1||
+||cell2||cell3||
 
 == Future Work == 
 
