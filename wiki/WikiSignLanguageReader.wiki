@@ -40,6 +40,10 @@ fwev gfrakgbyergha;fhjksgbviudfhvgidf
 OpenCV (Open Source Computer Vision) is a library of programming functions for real time computer vision. 
   *[http://opencv.willowgarage.com/wiki
 
+American Sign Language Linguistic Research Project
+  *[http://www.bu.edu/asllrp/
+
+
 ==Team Members==
 ------------------------------------------------------------------------------------------
 
