@@ -6,16 +6,16 @@
     void KMeans::ReadDirectories(vector<string> &q, string Dir){
 		// Read all the directories
 		DIR *dir = opendir(Dir.c_str());
-
+		cout << Dir << endl;
 		if (!dir)
 			return;
-
 		struct dirent *d_entry;
 
-		while ((d_entry=readdir(dir))!=NULL){
-			q.push_back(d_entry->d_name);
-		}
+		while ((d_entry=readdir(dir))!=NULL)
+			if (strcmp(d_entry->d_name,".") != 0 && strcmp(d_entry->d_name,"..") != 0)
+				q.push_back(d_entry->d_name);
 
+		cout << q.size() << endl;
 		closedir(dir);
     }
     /**
@@ -24,9 +24,16 @@
 	 */
 	IplImage** KMeans::flattenImage(IplImage* Image, int& Counter){
 
-		for (int i=0; i< Image->width; i++)
-			for (int j=0; j< Image->height; j++)
-				cvSet2D(Matrix,Counter,i*Image->width + j,cvGet2D(Image,i,j));
+		for (int i=0; i< Image->height; i++)
+		{
+			for (int j=0; j< Image->width; j++)
+			{
+				cvSetReal2D(Matrix, Counter,i*Image->width + j,cvGetReal2D(Image,i,j));
+				//cout << cvGetReal2D(Image,i,j) << " ";
+			}
+			//cout<<endl;
+		}
+
 
 		return &Image;
     }
@@ -48,25 +55,28 @@
 	 */
 	void KMeans::ProcessDirectory(string directory, int &Counter, int Label){
 		  directory += "/";
-
+		  cout << "Inside Process"  << directory << endl;
 		  DIR* dir = opendir(directory.c_str());
 		  struct dirent* d_entry;
-
-		  string Temp;
+		  string Temp("");
 
 		  // Loop for all the entries into the directory
 		  while((d_entry=readdir(dir))!=NULL){
+			  if (strcmp(d_entry->d_name,".")==0 || strcmp(d_entry->d_name,"..")==0)
+				  continue;
 			 // Read the Image
 			     Temp = directory;
 				 Temp += d_entry->d_name;
-				 IplImage *im_gray = cvLoadImage(Temp.c_str(),0);
 
+				 IplImage *im_gray = cvLoadImage(Temp.c_str(),0);
+				 //cout<< Temp.c_str() << endl;
 			 // Read the image, change to grayscale and resize it
 				 cvReleaseImage(    flattenImage(       ProcessImage(im_gray), Counter  )  );
                  // Set the Label
                  cvSetReal1D(Labels,Counter,Label);
                  // Increment the Counter
                  Counter++;
+                 //cout << Counter << endl;
 		 }
 	}
 
@@ -75,20 +85,24 @@
      */
 	KMeans::KMeans(string Dir, int NumberOfImages){
 		// Initialize matrices
-			Matrix = cvCreateMat(NumberOfImages,IMGSIZE,CV_8UC1);
-			Labels = cvCreateMat(NumberOfImages,1,CV_8UC1);
+			Matrix = cvCreateMat(NumberOfImages,IMGSIZE,CV_32FC1);
+			Labels = cvCreateMat(NumberOfImages,1,CV_32FC1);
 		//
 			vector<string> Directories;
 			ReadDirectories(Directories, Dir);
+			Length = Directories.size();
 
 	    // Process one directory at a time
             int MatCounter = 0;
 
+        	cout<<"Size" << Directories.size()<<endl;
+
             for (int i=0; i<Directories.size(); i++)
-                 ProcessDirectory(Directories[i],MatCounter,atoi(Directories[i].c_str()));
+                 ProcessDirectory(Dir + "/" + Directories[i],MatCounter,atoi(Directories[i].c_str()));
 
         // Allocate the clusters finally
-            Clusters = cvCreateMat(Directories.size(),IMGSIZE,CV_8UC1);
+            Clusters = cvCreateMat(Directories.size(),IMGSIZE,CV_32FC1);
+            cout << " trained \n";
 	}
 
 
@@ -97,7 +111,14 @@
 	 * Train the Image
 	 */
 	void KMeans::Train(){
-		Knearest.train(Matrix,Labels,NULL,false,Labels->width,false);
+		cout << "what \n";
+		try{
+			cout << Matrix->width << " - " << Matrix->height << "-"<< Length<< "-" << Labels->height << endl;
+			Knearest.train(Matrix,Labels,NULL,false,Length,false);
+		}catch(exception e){
+			cout << e.what() <<endl;
+		}
+		cout << Length << endl;
 	}
 	/**
 	 * Test the Image
@@ -111,6 +132,22 @@
 			for (int j=0; j< Image->height; j++)
 				cvSet2D(Sample,0,i*Image->width + j,cvGet2D(Image,i,j));
 
+		return Knearest.find_nearest(Sample,1);
+	}
+	/**
+	 * Test the Image
+	 */
+	float KMeans::Test(string FileName){
+
+		IplImage* Image;
+		CvMat* Sample = cvCreateMat(1,IMGSIZE,CV_32FC1);
+		Image = ProcessImage(cvLoadImage(FileName.c_str(),0));
+
+		for (int i=0; i< Image->height; i++)
+			for (int j=0; j< Image->width; j++)
+				cvSet2D(Sample,0,i*Image->width + j,cvGet2D(Image,i,j));
+
+		cvReleaseImage(&Image);
 		return Knearest.find_nearest(Sample,1);
 	}
 

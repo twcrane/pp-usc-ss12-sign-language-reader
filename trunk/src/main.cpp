@@ -16,8 +16,34 @@ int main(int argc,char* argv[]){
 	if (argc <= 1)
 		return -1;
 
-	KMeans kmeans("directory",atoi(argv[1]));
+	KMeans kmeans("../Data",atoi(argv[1]));
 	kmeans.Train();
+
+	cout << "Training Complete\n";
+	DIR *dir = opendir("../test");
+
+	if (!dir)
+		return 0;
+	cout << "non - Complete\n";
+
+	struct dirent *d_entry;
+    char c;
+    cvNamedWindow("Image");
+    IplImage* iplimage;
+	while ((d_entry=readdir(dir))!=NULL){
+		cout << (string("../test/")+d_entry->d_name) << " - ";
+		if (strcmp(d_entry->d_name,".")!=0 && strcmp(d_entry->d_name,"..")!=0)
+		{
+
+			cout << "==>" << kmeans.Test( (string("../test/")+d_entry->d_name) ) << endl;
+			iplimage = cvLoadImage((string("../test/")+d_entry->d_name).c_str(),0);
+			cvShowImage("Image",iplimage);
+			cvWaitKey();
+		}
+	}
+	cvDestroyAllWindows();
+
+	closedir(dir);
 
 	return 0;
 }
