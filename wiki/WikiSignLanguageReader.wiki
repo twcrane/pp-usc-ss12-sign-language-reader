@@ -27,13 +27,13 @@ Sign language is used all over the world by the hearing-impaired to communicate 
   * Scale Invariant/ Rotation Invariant.
   * Sequence Identification in a Finite Automata.
   * Combinations of facial & hold expressions.
+  * Kalman filtering for complex bob tracking.
+  * Machine Operation using sign language.
+
+
  
 ==Architecture & Design==
 ------------------------------------------------------------------------------------------
-
-sdjfhasghdfrugbvtk geriutvberutvbgreigf rkeutvbsd kfgbeivt gwertqpa;eytiuertyg
-ufvbrew gfhbevtger higebsytg e;roitybve;rlig
-fwev gfrakgbyergha;fhjksgbviudfhvgidf
 
 http://i45.tinypic.com/2lo4s4i.jpg
 
