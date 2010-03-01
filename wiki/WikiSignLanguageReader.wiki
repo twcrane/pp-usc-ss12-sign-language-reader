@@ -19,6 +19,14 @@ Sign language is used all over the world by the hearing-impaired to communicate 
   * Text to speech / Integration with GUI.
   * Mobile Interface.
 
+== Challenges Faced ==
+------------------------------------------------------------------------------------------
+  * Hardware/software compatibility issues
+  * Change of light intensity during the video.
+  * Gesture Recognition in real-time video.
+  * 2D Data
+  * Non-availability of robust open sourced ML techniques
+
 
 == Future Work == 
 ------------------------------------------------------------------------------------------
