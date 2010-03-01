@@ -34,8 +34,8 @@ Sign language is used all over the world by the hearing-impaired to communicate 
   * All type of Expressions.
   * Scale Invariant/ Rotation Invariant.
   * Sequence Identification in a Finite Automata.
-  * Combinations of facial & hold expressions.
-  * Kalman filtering for complex bob tracking.
+  * Combinations of facial & hand expressions.
+  * Kalman filtering for complex blob tracking.
   
 
 
