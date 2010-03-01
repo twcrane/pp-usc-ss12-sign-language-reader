@@ -1,7 +1,7 @@
 == Overview==
 ------------------------------------------------------------------------------------------
 
-Sign language is used all over the world by the hearing-impaired to communicate in the society. Sign Language Reader is a project that can translate sign language, from a video or web camera, into text or speech and other actions in real-time.
+Sign language is used all over the world by the hearing-impaired to communicate in the society. Sign Language Reader is a project that takes the sign language as an input, from a video source, and translates them into text, speech or other actions in real-time.
 
 == Usability ==
 ------------------------------------------------------------------------------------------
