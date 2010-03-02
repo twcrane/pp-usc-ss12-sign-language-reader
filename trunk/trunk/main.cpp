@@ -1,3 +1,4 @@
+// SS-12: Sign Language Reader
 #include <cmath>
 #include <cstdio>
 #include <iostream>
@@ -220,7 +221,7 @@ int main()
     cvROIRect.width = 250;
     cvROIRect.height = 320;
 
-    KMeans kmeans("../Data",1071);
+    KMeans kmeans("../Data",3534);
     kmeans.Train();
 
     cout << "Training Complete\n";
@@ -292,7 +293,7 @@ int main()
 	char fname[50]={0};
 	int counter=0;
 	cvSaveImage("BGImage.bmp",bgMean);
-	float old_class=-1.0f;
+	float old_class=-2.0f;
 	IplImage* img_GUI[6];
 
 	img_GUI[0]= cvLoadImage( "GUI/GUI1.jpg" );
@@ -309,8 +310,7 @@ int main()
 	//cvNamedWindow( "newWindows", CV_WINDOW_AUTOSIZE );
 	cvMoveWindow("OrigImage",360,0);
 	cvMoveWindow("CalculatedImage",700,220);
-	int class_arr[10]={0};
-	int counter_for_arr=0;
+
 	while( 1 ) 
 	{
 		// Get one frame
@@ -352,31 +352,26 @@ int main()
 		BlobDetect(curr_img,&temp);
 		cvShowImage("newWindows",temp);*/
 
-		if(counter%3==0)
+		if(counter%2==0)
 		{
-			if(counter_for_arr<10)
-			{
 
-				float class_detected = kmeans.Test(curr_img);
-				class_arr[counter_for_arr++] = (int)class_detected;
-				//printf("gfgfgfgf");
-				if(fabs(old_class-class_detected)>1e-2)
-					cout<<"Detected = "<<class_detected<<endl;
-			}
-			else
+			float class_detected = kmeans.Test(curr_img);
+			//class_arr[counter_for_arr++] = (int)class_detected;
+			//printf("gfgfgfgf");
+			if((int)old_class==(int)class_detected)
 			{
-				int classified[5] = {0};
-				for(int j=0;j<9;j++)
-					if(class_arr[j]>=1 && class_arr[j]<=5)
-						classified[class_arr[j]-1]++;
-				int max=0;
-				for(int j=1;j<5;j++)
-					if(class_arr[j]>class_arr[max])
-						max=j;
+				int temp2 = (int)old_class;
+				cout<<"Detected = "<<class_detected<<endl;
 
-				if(max>=1 && max<=5)
-					cvShowImage("IconPane",img_GUI[(int)old_class]);
+				if(temp2>=1 && temp2<=5)
+				{
+					//cout<<"dfdfdF";
+					cvShowImage("IconPane",img_GUI[temp2]);
+
+				}
+				cvWaitKey(1);
 			}
+			old_class=class_detected;
 
 		}
 		//sprintf("\nSize  = %d %d",temp->width,temp->height);
