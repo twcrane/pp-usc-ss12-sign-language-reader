@@ -1,5 +1,62 @@
-ReadME for Sign Language Recognition
-------------------------------------
+For Programmers
+---------------
+Notice: There has been some changes in architecture 
+        Follow it for keeping the code clean.   
+
+
+
+Sign Language Recognition
+-------------------------
+
+Index 
+-----
+1) Introduction
+2) Folder Structure
+3) Build
+4) Install
+5) Extending it.
+
+
+
+
+
+
+
+
+1) Introduction 
+---------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2) Folder Structure 
+-------------------
+
+
+
+
+
+
+
+3) 
 
 Dependencies: OpenCV, G++ 
 
