@@ -5,6 +5,8 @@ Notice: There has been some changes in architecture
 
 Main.cpp will not compile until unless you change the include path of NN and Kmeans in the main.cpp file to compile it. 
 
+Put all the .h files in the include folder for easy access
+
 
 Sign Language Recognition
 -------------------------
