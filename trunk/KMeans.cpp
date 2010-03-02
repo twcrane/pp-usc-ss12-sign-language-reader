@@ -12,7 +12,7 @@
 		struct dirent *d_entry;
 
 		while ((d_entry=readdir(dir))!=NULL)
-			if (strcmp(d_entry->d_name,".") != 0 && strcmp(d_entry->d_name,"..") != 0)
+			if (strcmp(d_entry->d_name,".DS_Store")!=0 && strcmp(d_entry->d_name,".") != 0 && strcmp(d_entry->d_name,"..") != 0)
 				q.push_back(d_entry->d_name);
 
 		cout << q.size() << endl;
@@ -74,7 +74,8 @@
 
 		  // Loop for all the entries into the directory
 		  while((d_entry=readdir(dir))!=NULL){
-			  if (strcmp(d_entry->d_name,".")==0 || strcmp(d_entry->d_name,"..")==0)
+
+			  if (strcmp(d_entry->d_name,".DS_Store")==0 || strcmp(d_entry->d_name,".")==0 || strcmp(d_entry->d_name,"..")==0)
 				  continue;
 			 // Read the Image
 			     Temp = directory;
