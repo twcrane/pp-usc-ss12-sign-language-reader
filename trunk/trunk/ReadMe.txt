@@ -3,6 +3,7 @@ For Programmers
 Notice: There has been some changes in architecture 
         Follow it for keeping the code clean.   
 
+Main.cpp will not compile until unless you change the include path of NN and Kmeans in the main.cpp file to compile it. 
 
 
 Sign Language Recognition
