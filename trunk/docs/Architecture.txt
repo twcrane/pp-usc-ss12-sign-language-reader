@@ -1,0 +1,12 @@
+
+classes
+
+DETECTION
+---------
+- TrainingPhase 
+   Input - Sequence of Images with an Id.
+   Output - void
+- CheckImage
+   Input - Image
+   Output - Id of the image as an integer, 
+- 
