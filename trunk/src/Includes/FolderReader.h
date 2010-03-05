@@ -21,7 +21,6 @@ class FolderReader : InputReader {
 	// Per Class
 	    // Index in the Class Dirs
 		int curClass;
-		string ClassName;
 		DIR *ClassDir;
 
 public:
@@ -38,6 +37,8 @@ public:
 
 		   curClass = -1;
 		   ClassDir = NULL;
+
+		 nextClass();
 	}
 	/**
 	 * Read all the directories in
@@ -58,7 +59,7 @@ public:
 	}
 
 	/**
-	 *
+	 * Go to Next Class
 	 */
 	bool nextClass(){
 		// Close the Current Directory
@@ -79,7 +80,7 @@ public:
 			return true;
 	}
 	/**
-	 *
+	 * next image from the list
 	 */
 	IplImage* next(int &ClassNumber){
 		struct dirent *d_entry;
@@ -100,15 +101,19 @@ public:
 		IplImage *resized = cvCreateImage(cvSize(IMGWIDTH,IMGHEIGHT),im_gray->depth,1);
 		cvResize(im_gray,resized,0);
 		cvReleaseImage(&im_gray);
+
+		ClassNumber = atoi(ClassDirs[curClass].c_str());
 		return resized;
 	}
 	/**
 	 *
 	 */
 	void Reset(){
-		end();
+		curClass = 0;
+		if (ClassDir)
+			closedir(ClassDir);
+		ClassDir = NULL;
 	}
-
 
 	/**
 	 *
