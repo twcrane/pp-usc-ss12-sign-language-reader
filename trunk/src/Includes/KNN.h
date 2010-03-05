@@ -7,8 +7,7 @@
 
 #include "Prerequs.h"
 
-#include "cv.h"
-#include "highgui.h"
+#include "Prerequs.h"
 #include "ml.h"
 #include <vector>
 #include <dirent.h>
@@ -24,7 +23,7 @@ using namespace std;
 #define IMGHEIGHT 96
 #define IMGSIZE 128*96
 
-class KMeans{
+class KMeans : ML{
 
 	CvKNearest Knearest;
     // 2D Matrix storing values
@@ -33,40 +32,28 @@ class KMeans{
 //    CvMat* Clusters;
     int Length;
 public:
-    /**
-     * ReadDirectories
-     */
-    void ReadDirectories(vector<string> &, string );
-    /**
-	 * Flatten Images into the Matrix
-	 * TOBECHECKED
-	 */
-	IplImage** flattenImage(IplImage* , int& );
-	/**
-	 * ProcessImage
-	 */
-	IplImage* ProcessImage(IplImage* );
-	/**
-	 * Process Directory
-	 */
-	void ProcessDirectory(string , int &, int );
-    /**
-     * Constructor
-     */
-	KMeans(string , int );
 
+	KMeans(string , int );
 	//************************************************Main Prediction and training Functions********************************/
 	/**
 	 * Train the Image
 	 */
-	void Train();
+	void train();
 	/**
 	 * Test the Image
 	 */
-	float Test(IplImage* );
+	float test(IplImage* );
 	//float Test(IplImage*);
 	//**********************************************************************************************************************/
 	~KMeans();
+	/**
+	 *
+	 */
+	void save(string filename);
+	/**
+	 *
+	 */
+	void load(string filename);
 };
 
 #endif /* KMEANS_H_ */
