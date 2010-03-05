@@ -1,12 +1,10 @@
 // SS-12: Sign Language Reader
 #include "Prerequs.h"
-
+#include "KNN.h"
 using namespace std;
 
 /******* Open CV stuff starts******/
-//#include "cv.h"
-//#include "highgui.h"
-#include "KMeans.h"
+
 /********* Open CV Stuff ends********/
 
 #define UPIXEL(img, i, j, k)	(*( (unsigned char*) ( (img)->imageData + (img)->widthStep * (j) + (img)->nChannels * (i) + (k)) ))

@@ -8,7 +8,7 @@ class FeatureDetector{
 public:
 	//
 	virtual CvRect detect();
-	virtual void detect(IplImage*);
+	virtual IplImage* detect(IplImage*);
 	virtual void load();
 
 };
