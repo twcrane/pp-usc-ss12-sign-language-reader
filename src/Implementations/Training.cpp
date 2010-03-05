@@ -36,3 +36,10 @@ void Training::FlattenImage(IplImage* Image, int Label){
 	cvSetReal1D(Labels,Counter,Label);
 	Counter ++ ;
 }
+
+/**
+ * Test the Image
+ */
+int Training::test(IplImage* TestImage){
+	return (int)StoredML->test(TestImage);
+}

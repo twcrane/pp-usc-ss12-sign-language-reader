@@ -156,12 +156,17 @@ void OverlayImg(IplImage* RawImg, IplImage *SilhImg)
     }
 }
 
+/**
+ *
+ */
 int main() 
 {
 
 	// Create a training instance.
 	Training training = new Training(new FolderReader("Data"),new EdgeDetect(),new KNN());
+	// training.test();
 
+	//
 	CvRect cvROIRect;//(20,50,250,320);
     cvROIRect.x = 100;
     cvROIRect.y = 200;

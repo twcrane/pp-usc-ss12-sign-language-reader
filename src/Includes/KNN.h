@@ -12,17 +12,14 @@
 
 using namespace std;
 
-class KMeans : ML{
+class KNN : ML{
 
 	CvKNearest Knearest;
-    // 2D Matrix storing values
-    CvMat* Matrix;
-    CvMat* Labels;
-//    CvMat* Clusters;
+	// Length
     int Length;
 public:
 
-	KMeans(string , int );
+	KNN(string , int );
 	//************************************************Main Prediction and training Functions********************************/
 	/**
 	 * Train the Image
@@ -34,7 +31,7 @@ public:
 	float test(IplImage* );
 	//float Test(IplImage*);
 	//**********************************************************************************************************************/
-	~KMeans();
+	~KNN();
 	/**
 	 *
 	 */
