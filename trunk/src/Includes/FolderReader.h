@@ -1,10 +1,11 @@
 #include "Prerequs.h"
 #include "FeatureDetector.h"
+#include "InputReader.h"
 
 /**
  * Folder Reader class
  */
-class FolderReader {
+class FolderReader : InputReader {
 
 	string Directory;
 	DIR *RootDir;
