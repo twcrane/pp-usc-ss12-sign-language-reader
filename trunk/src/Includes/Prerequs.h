@@ -12,6 +12,7 @@
    /*ALL the necessary header files*/
     #include "math.h"
     #include "cv.h"
+	#include "ml.h"
     #include "highgui.h"
     #include "stdio.h"
 	#include <cvaux.h>

@@ -3,10 +3,6 @@
 #include "KNN.h"
 using namespace std;
 
-/******* Open CV stuff starts******/
-
-/********* Open CV Stuff ends********/
-
 #define UPIXEL(img, i, j, k)	(*( (unsigned char*) ( (img)->imageData + (img)->widthStep * (j) + (img)->nChannels * (i) + (k)) ))
 #define PIXEL(img, i, j, k)		(*( (char*)          ( (img)->imageData + (img)->widthStep * (j) + (img)->nChannels * (i) + (k)) ))
 
@@ -160,6 +156,8 @@ void OverlayImg(IplImage* RawImg, IplImage *SilhImg)
 
 int main() 
 {
+
+	// Create a training instance.
 
 	CvRect cvROIRect;//(20,50,250,320);
     cvROIRect.x = 100;
