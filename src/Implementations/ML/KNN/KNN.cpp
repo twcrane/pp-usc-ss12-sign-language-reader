@@ -42,24 +42,9 @@
 	 */
 	IplImage* KMeans::ProcessImage(IplImage* im_gray)
 	{
-
-		 //BlobRecognizer b;
-		 // im_gray = b.Runit(im_gray);
-
-		 //cvNamedWindow("sdf");
-		 //cvShowImage("sdf",im_gray);
-		 //cvWaitKey();
-		 //cvDestroyAll	Windows();
-		//printf("I am here \n");
-		//printf("\I am here .."
-//printf("grascale data : %d %d",im_gray->depth,im_gray->nChannels);
 		 IplImage *resized = cvCreateImage(cvSize(IMGWIDTH,IMGHEIGHT),im_gray->depth,1);
-		 cvResize(im_gray,resized,0);
-		 cvReleaseImage(&im_gray);
-		 //printf("\nI am also here..");
-		 // Normalize
-		 //cvNorm(resized, NULL, CV_L1);
-		 // Return
+			 cvResize(im_gray,resized,0);
+			 cvReleaseImage(&im_gray);
   		 return resized;
 	}
 	/**
