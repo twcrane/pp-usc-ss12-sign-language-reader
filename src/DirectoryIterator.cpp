@@ -1,4 +1,5 @@
 #include "Prerequs.h"
+#include "FeatureDetector.h"
 
 class DirectoryIterator {
 
@@ -9,6 +10,8 @@ class DirectoryIterator {
 
 	int curClass;
 	int curNum;
+
+
 
 public:
 	DirectoryIterator(string dirname){
