@@ -1,82 +1,5 @@
 #include "KMeans.h"
 //#include "BlobRecognition/BlobRecognizer.h"
-    /**
-     * ReadDirectories
-     */
-    void KMeans::ReadDirectories(vector<string> &q, string Dir){
-		// Read all the directories
-		DIR *dir = opendir(Dir.c_str());
-		cout << Dir << endl;
-		if (!dir)
-			return;
-		struct dirent *d_entry;
-
-		while ((d_entry=readdir(dir))!=NULL)
-			if (strcmp(d_entry->d_name,".DS_Store")!=0 && strcmp(d_entry->d_name,".") != 0 && strcmp(d_entry->d_name,"..") != 0)
-				q.push_back(d_entry->d_name);
-
-		cout << q.size() << endl;
-		closedir(dir);
-    }
-    /**
-	 * Flatten Images into the Matrix
-	 * TOBECHECKED
-	 */
-	IplImage** KMeans::flattenImage(IplImage* Image, int& Counter){
-
-		for (int i=0; i< Image->height; i++)
-		{
-			for (int j=0; j< Image->width; j++)
-			{
-				cvSetReal2D(Matrix, Counter,i*Image->width + j,cvGetReal2D(Image,i,j));
-				//cout << cvGetReal2D(Image,i,j) << " ";
-			}
-			//cout<<endl;
-		}
-
-
-		return &Image;
-    }
-	/**
-	 * ProcessImage
-	 */
-	IplImage* KMeans::ProcessImage(IplImage* im_gray)
-	{
-		 IplImage *resized = cvCreateImage(cvSize(IMGWIDTH,IMGHEIGHT),im_gray->depth,1);
-			 cvResize(im_gray,resized,0);
-			 cvReleaseImage(&im_gray);
-  		 return resized;
-	}
-	/**
-	 * Process Directory
-	 */
-	void KMeans::ProcessDirectory(string directory, int &Counter, int Label){
-		  directory += "/";
-		  cout << "Inside Process"  << directory << endl;
-		  DIR* dir = opendir(directory.c_str());
-		  struct dirent* d_entry;
-		  string Temp("");
-
-		  // Loop for all the entries into the directory
-		  while((d_entry=readdir(dir))!=NULL){
-
-			  if (strcmp(d_entry->d_name,".DS_Store")==0 || strcmp(d_entry->d_name,".")==0 || strcmp(d_entry->d_name,"..")==0)
-				  continue;
-			 // Read the Image
-			     Temp = directory;
-				 Temp += d_entry->d_name;
-
-				 IplImage *im_gray = cvLoadImage(Temp.c_str(),0);
-				 //cout<< Temp.c_str() << endl;
-			 // Read the image, change to grayscale and resize it
-				 cvReleaseImage(    flattenImage(       ProcessImage(im_gray), Counter  )  );
-                 // Set the Label
-                 cvSetReal1D(Labels,Counter,Label);
-                 // Increment the Counter
-                 Counter++;
-                 //cout << Counter << endl;
-		 }
-	}
 
     /**
      * Constructor
@@ -108,7 +31,7 @@
 	/**
 	 * Train the Image
 	 */
-	void KMeans::Train(){
+	void KMeans::train(){
 		cout << "what \n";
 		try{
 			cout << Matrix->width << " - " << Matrix->height << "-"<< Length<< "-" << Labels->height << endl;
@@ -135,7 +58,7 @@
 	/**
 	 * Test the Image
 	 */
-	float KMeans::Test(IplImage *Image)
+	float KMeans::test(IplImage *Image)
 	{
 		IplImage *tempImg = cvCreateImage(cvSize(Image->width,Image->height),8,1);
 		//cvCopy(Image,tempImg,0);
