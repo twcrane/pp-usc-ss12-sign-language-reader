@@ -28,7 +28,7 @@ class KMeans{
     // 2D Matrix storing values
     CvMat* Matrix;
     CvMat* Labels;
-    CvMat* Clusters;
+//    CvMat* Clusters;
     int Length;
 public:
     /**
