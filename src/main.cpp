@@ -1,6 +1,8 @@
 // SS-12: Sign Language Reader
 #include "Prerequs.h"
 #include "KNN.h"
+#include "EdgeDetect.h"
+
 using namespace std;
 
 #define UPIXEL(img, i, j, k)	(*( (unsigned char*) ( (img)->imageData + (img)->widthStep * (j) + (img)->nChannels * (i) + (k)) ))
@@ -158,6 +160,7 @@ int main()
 {
 
 	// Create a training instance.
+	Training training = new Training(new FolderReader("Data"),new EdgeDetect(),new KNN());
 
 	CvRect cvROIRect;//(20,50,250,320);
     cvROIRect.x = 100;

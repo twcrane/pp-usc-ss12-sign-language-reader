@@ -3,7 +3,6 @@
 class ML{
 
 public:
-	// virtual somefunction();
 
 	virtual void create(int);
 	virtual void train(CvMat*,CvMat*);

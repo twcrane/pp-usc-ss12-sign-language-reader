@@ -21,7 +21,7 @@ public:
 	/**
 	 *  Read the training dataset
 	 */
-    Training(InputReader reader, FeatureDetector fd, ML ml);
+    Training(InputReader *reader, FeatureDetector *fd, ML *ml);
 
 	/**
 	 * Flatten the Image into the Matrix
