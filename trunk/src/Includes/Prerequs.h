@@ -8,6 +8,9 @@
 #ifndef PREREQUS_H_
 #define PREREQUS_H_
 
+#define IMGWIDTH 128
+#define IMGHEIGHT 96
+#define IMGSIZE (128*96)
 
    /*ALL the necessary header files*/
     #include "math.h"
@@ -32,9 +35,5 @@
 	#include <iostream>
 
 	using namespace std;
-
-	#define IMGWIDTH 128;
-	#define IMGHEIGHT 96;
-	#define IMGSIZE (128*96);
 
 #endif /* PREREQUS_H_ */

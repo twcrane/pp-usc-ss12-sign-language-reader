@@ -12,19 +12,20 @@
 
 using namespace std;
 
-class KNN : ML{
+class KNN : public ML{
 
 	CvKNearest Knearest;
-	// Length
     int Length;
+    int Max_K;
 public:
 
-	KNN(string , int );
+    KNN(){}
+	void SetK(int K){Max_K = K;}
 	//************************************************Main Prediction and training Functions********************************/
 	/**
 	 * Train the Image
 	 */
-	void train();
+	void train(CvMat*,CvMat*);
 	/**
 	 * Test the Image
 	 */

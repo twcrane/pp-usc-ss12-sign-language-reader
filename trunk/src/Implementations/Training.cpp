@@ -14,16 +14,22 @@ Training::Training(InputReader *reader, FeatureDetector *fd, ML *ml){
     	int NumberOfImages = reader->numberofimages();
 
     	// Initialize Matrix.
-		Matrix = cvCreateMat(NumberOfImages,IMGSIZE,CV_32FC1);
-		Labels = cvCreateMat(NumberOfImages,1,CV_32FC1);
+		Matrix = cvCreateMat(NumberOfImages, IMGSIZE , CV_32FC1);
+		Labels = cvCreateMat(NumberOfImages, 1 , CV_32FC1);
 		int classNumber=0;
-		while((IplImage* img=reader->next(classNumber))!=NULL)
+		IplImage* img;
+		while((img=reader->next(classNumber))!=NULL)
 		{
 			img=fd->detect(img);
 			FlattenImage(img,classNumber);
 		}
+
 		ml->train(Matrix,Labels);
 		ml->save("MLTraining");
+
+		cvReleaseMat(&Matrix);
+		cvReleaseMat(&Labels);
+
 }
 /**
  * Flatten the Image into the Matrix
