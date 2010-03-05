@@ -5,6 +5,8 @@
  *      Author: parth
  */
 
+#include "Prerequs.h"
+
 #include "cv.h"
 #include "highgui.h"
 #include "ml.h"

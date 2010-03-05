@@ -5,7 +5,7 @@ class ML{
 public:
 	// virtual somefunction();
 
-	virtual void train();
+	virtual void train(CvMat*,CvMat*);
 	virtual float test(IplImage*);
 
 	virtual void save(string);
