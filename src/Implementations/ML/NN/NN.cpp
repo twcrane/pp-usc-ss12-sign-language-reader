@@ -3,23 +3,7 @@
     /**
      * Constructor
      */
-	NN::NN(string Dir, int NumberOfImages){
-		// Initialize matrices
-			Matrix = cvCreateMat(NumberOfImages,IMGSIZE,CV_32FC1);
-		//
-			vector<string> Directories;
-			ReadDirectories(Directories, Dir);
-			Length = Directories.size();
-
-			Labels = cvCreateMat(NumberOfImages,Length,CV_32FC1);
-
-	    // Process one directory at a time
-            int MatCounter = 0;
-        	cout<<"Size" << Directories.size()<<endl;
-
-            for (int i=0; i<Directories.size(); i++)
-                 ProcessDirectory(Dir + "/" + Directories[i],MatCounter,atoi(Directories[i].c_str()));
-	}
+	NN::NN(){	}
 
 
 	//************************************************Main Prediction and training Functions********************************/
@@ -42,14 +26,17 @@
 	 */
 	float NN::test(IplImage* Image){
 
-		CvMat* Sample = cvCreateMat(1,IMGSIZE,IPL_DEPTH_8U);
-		Image = ProcessImage(Image);
+		CvMat* Sample = cvCreateMat(1,IMGSIZE,CV_8U);
+
+		IplImage *resized = cvCreateImage(cvSize(IMGWIDTH,IMGHEIGHT),Image->depth,1);
+		cvResize(Image,resized,0);
+		cvReleaseImage(&Image);
 
 		for (int i=0; i< Image->width; i++)
 			for (int j=0; j< Image->height; j++)
-				cvSet2D(Sample,0,i*Image->width + j,cvGet2D(Image,i,j));
+				cvSet2D(Sample,0,i*resized->width + j,cvGet2D(resized,i,j));
 
-		cvReleaseImage(&Image);
+		cvReleaseImage(&resized);
 
 		 CvMat *output = cvCreateMat(1,Length,CV_32F);
 		 NNModel.predict(Sample,output);
@@ -67,14 +54,14 @@
 	/*
 	 *
 	 */
-	float NN::save (string filename){
+	void NN::save (string filename){
 		NNModel.save(filename.c_str(),"wht");
 	}
 
 	/*
 	 *
 	 */
-	float NN::load (string filename){
+	void NN::load (string filename){
 		NNModel.load(filename.c_str(),"wht");
 	}
 	/**
@@ -83,36 +70,5 @@
 	void NN::create(int nLayers) {
 
 	}
-	/**
-	 * Test the Image
-	 */
-	float NN::test(string FileName){
-
-		IplImage* Image;
-		CvMat* Sample = cvCreateMat(1,IMGSIZE,CV_32F);
-		Image = ProcessImage(cvLoadImage(FileName.c_str(),0));
-
-		for (int i=0; i< Image->height; i++)
-			for (int j=0; j< Image->width; j++)
-				cvSet2D(Sample,0,i*Image->width + j,cvGet2D(Image,i,j));
-
-		cvReleaseImage(&Image);
-
-		 cout<< "Testing\n";
-
-		 CvMat *output = cvCreateMat(1,Length,CV_32F);
-		 NNModel.predict(Sample,output);
-
-		 int min = 10000;
-		 for (int i=0; i<Length;i++)
-		 {
-			 cout << cvGetReal2D(output,0,i) << "  ";
-			 if (min > cvGetReal2D(output,0,i))
-				 min = i;
-		 }
-
-		 return min;
-	}
-
 	//**********************************************************************************************************************/
 	NN::~NN(){	}

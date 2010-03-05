@@ -1,4 +1,10 @@
-#include "Prerequs.h"
+#ifndef _ML_
+#define _ML_
+
+#include "cv.h"
+#include <string>
+
+using namespace std;
 
 class ML{
 
@@ -12,3 +18,5 @@ public:
 	virtual void load(string);
 
 };
+
+#endif

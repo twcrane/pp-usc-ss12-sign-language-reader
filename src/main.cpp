@@ -1,7 +1,8 @@
 // SS-12: Sign Language Reader
-#include "Prerequs.h"
 #include "KNN.h"
 #include "EdgeDetect.h"
+#include "Training.h"
+#include "FolderReader.h"
 
 using namespace std;
 
@@ -163,8 +164,8 @@ int main()
 {
 
 	// Create a training instance.
-	Training training = new Training(new FolderReader("Data"),new EdgeDetect(),new KNN());
-	// training.test();
+	Training *training = new Training(new FolderReader("Data"),new EdgeDetect(),new KNN());
+    cout << "Training Complete\n";
 
 	//
 	CvRect cvROIRect;//(20,50,250,320);
@@ -172,11 +173,6 @@ int main()
     cvROIRect.y = 200;
     cvROIRect.width = 250;
     cvROIRect.height = 320;
-
-    KMeans kmeans("../Data",3534);
-    kmeans.Train();
-
-    cout << "Training Complete\n";
 
 	CvCapture* capture = cvCaptureFromCAM(0);
 
@@ -257,14 +253,10 @@ int main()
 		cvShowImage( "CalculatedImage", curr_img );
 		counter++;
 
-/*		IplImage *temp;
-		BlobDetect(curr_img,&temp);
-		cvShowImage("newWindows",temp);*/
-
 		if(counter%2==0)
 		{
 
-			float class_detected = kmeans.Test(curr_img);
+			float class_detected = training->test(curr_img);
 			if((int)old_class==(int)class_detected)
 			{
 				int temp2 = (int)old_class;

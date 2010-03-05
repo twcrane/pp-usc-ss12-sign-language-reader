@@ -11,19 +11,13 @@
 class NoDetector{
 
 	/**
-	 * Detect the hand in the image and return it
-	 */
-	CvRect detect(IplImage* InputImage){
-		// Do Nothing
-	}
-	/**
 	 *
 	 */
 	IplImage* detect(IplImage* InputImage){
 		// Do the detection and return the detected image
 		IplImage *temp= cvCreateImage(cvSize(InputImage->width,InputImage->height),IPL_DEPTH_8U,1);
 		cvCopy(InputImage,temp);
-		cvReleaseImage(InputImage);
+		cvReleaseImage(&InputImage);
 		return temp;
 	}
 	/**

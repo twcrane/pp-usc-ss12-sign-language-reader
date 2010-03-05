@@ -24,21 +24,21 @@ class NN : ML{
     //BlobRecognizer b;
 public:
 
-	NN(string , int );
+	NN();
 
 	//************************************************Main Prediction and training Functions********************************/
 	/**
 	 * Train the Image
 	 */
-	void Train();
+	void train();
 	/**
 	 * Test the Image
 	 */
 	float test(IplImage* );
 	float test(string);
 	void create(int nLayers);
-	float save (string filename);
-	float load (string filename);
+	void save (string filename);
+	void load (string filename);
 	//**********************************************************************************************************************/
 	~NN();
 };
