@@ -26,7 +26,7 @@ using namespace std;
 
 #define IMGSIZE IMGHEIGHT*IMGWIDTH
 
-class NN{
+class NN : ML{
 
 	CvANN_MLP NNModel;
     // 2D Matrix storing values
@@ -37,26 +37,7 @@ class NN{
 
     //BlobRecognizer b;
 public:
-    /**
-     * ReadDirectories
-     */
-    void ReadDirectories(vector<string> &, string );
-    /**
-	 * Flatten Images into the Matrix
-	 * TOBECHECKED
-	 */
-	IplImage** flattenImage(IplImage* , int& );
-	/**
-	 * ProcessImage
-	 */
-	IplImage* ProcessImage(IplImage* );
-	/**
-	 * Process Directory
-	 */
-	void ProcessDirectory(string , int &, int );
-    /**
-     * Constructor
-     */
+
 	NN(string , int );
 
 	//************************************************Main Prediction and training Functions********************************/
@@ -67,11 +48,11 @@ public:
 	/**
 	 * Test the Image
 	 */
-	float Test(IplImage* );
-	float Test(string);
-
+	float test(IplImage* );
+	float test(string);
+	void create(int nLayers);
 	float save (string filename);
-	float Load (string filename);
+	float load (string filename);
 	//**********************************************************************************************************************/
 	~NN();
 };
