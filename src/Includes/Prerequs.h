@@ -11,11 +11,16 @@
 
    /*ALL the necessary header files*/
     #include "math.h"
-    #include "../../cv/include/opencv/cv.h"
+    #include "cv.h"
     #include "highgui.h"
     #include "stdio.h"
 	#include <cvaux.h>
+	#include <cmath>
+	#include <cstdio>
+	#include <cassert>
 	#include <vector>
+	#include <cstdlib>
+	#include <algorithm>
 
 	#include <fstream>
 	#include <iostream>
