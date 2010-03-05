@@ -22,10 +22,19 @@
 	#include <vector>
 	#include <cstdlib>
 	#include <algorithm>
+	#include <dirent.h>
+	#include <sys/types.h>
+	#include "interfaces/InputReader.h"
+	#include "interfaces/ML.h"
+	#include "interfaces/FeatureDetector.h"
 
 	#include <fstream>
 	#include <iostream>
 
 	using namespace std;
+
+	#define IMGWIDTH 128;
+	#define IMGHEIGHT 96;
+	#define IMGSIZE (128*96);
 
 #endif /* PREREQUS_H_ */

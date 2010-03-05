@@ -7,23 +7,23 @@
  */
 #include "Training.h"
 
-Training::Training(InputReader reader, FeatureDetector fd, ML ml){
+Training::Training(InputReader *reader, FeatureDetector *fd, ML *ml){
 
     	Counter = 0;
     	// Get the Number of Images
-    	int NumberOfImages = reader.numberofimages();
+    	int NumberOfImages = reader->numberofimages();
 
     	// Initialize Matrix.
 		Matrix = cvCreateMat(NumberOfImages,IMGSIZE,CV_32FC1);
 		Labels = cvCreateMat(NumberOfImages,1,CV_32FC1);
 		int classNumber=0;
-		while((IplImage* img=reader.next(classNumber))!=NULL)
+		while((IplImage* img=reader->next(classNumber))!=NULL)
 		{
-			img=fd.detect(img);
+			img=fd->detect(img);
 			FlattenImage(img,classNumber);
 		}
-		ml.train(Matrix,Labels);
-		ml.save("MLTraining");
+		ml->train(Matrix,Labels);
+		ml->save("MLTraining");
 }
 /**
  * Flatten the Image into the Matrix

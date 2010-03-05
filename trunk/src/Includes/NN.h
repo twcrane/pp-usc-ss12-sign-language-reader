@@ -5,26 +5,12 @@
  *      Author: parth
  */
 
-#include "cv.h"
-#include "highgui.h"
-#include "ml.h"
-#include <vector>
-#include <dirent.h>
-#include <sys/types.h>
-#include <iostream>
-//#include "BlobRecognition/BlobRecognizer.h"
+#include "Prerequs.h"
 
 #ifndef NN_H_
 #define NN_H_
 
 using namespace std;
-
-//#define IMGWIDTH 128
-//#define IMGHEIGHT 96
-#define IMGWIDTH 32
-#define IMGHEIGHT 24
-
-#define IMGSIZE IMGHEIGHT*IMGWIDTH
 
 class NN : ML{
 
