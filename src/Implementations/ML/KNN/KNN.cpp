@@ -32,5 +32,18 @@
 		return Knearest.find_nearest(Sample,1);
 	}
 
+	/**
+	 *
+	 */
+	void KNN::save(string filename){
+
+	}
+	/**
+	 *
+	 */
+	void KNN::load(string filename){
+
+	}
+
 	//**********************************************************************************************************************/
 	KNN::~KNN(){ }
