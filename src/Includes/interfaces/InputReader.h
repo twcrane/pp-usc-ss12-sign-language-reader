@@ -1,7 +1,7 @@
 class InputReader{
 
 public:
-	virtual IplImage* next();
+	virtual IplImage* next(int );
 	virtual void reset();
 	virtual void end();
 	virtual int numberofimages();
