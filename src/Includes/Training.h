@@ -9,6 +9,8 @@
 #define TRAINING_H_
 
 #include "Prerequs.h"
+#include "KNN.h"
+#include "FolderReader.h"
 
 class Training{
 

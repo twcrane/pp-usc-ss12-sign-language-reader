@@ -24,8 +24,13 @@ Training::Training(InputReader *reader, FeatureDetector *fd, ML *ml){
 			FlattenImage(img,classNumber);
 		}
 
+		cout << __LINE__ <<endl;
+
+		((KNN*)ml)->SetK(((FolderReader*)reader)->k());
 		ml->train(Matrix,Labels);
 		ml->save("MLTraining");
+
+		StoredML = ml;
 
 		cvReleaseMat(&Matrix);
 		cvReleaseMat(&Labels);
@@ -35,12 +40,14 @@ Training::Training(InputReader *reader, FeatureDetector *fd, ML *ml){
  * Flatten the Image into the Matrix
  */
 void Training::FlattenImage(IplImage* Image, int Label){
+	cout << "Image Flattennin\n";
 	for (int i=0; i< Image->height; i++)
 		for (int j=0; j< Image->width; j++)
 			cvSetReal2D(Matrix, Counter,i*Image->width + j,cvGetReal2D(Image,i,j));
 
 	cvSetReal1D(Labels,Counter,Label);
 	Counter ++ ;
+	cout << "Out of Image Flattennin\n";
 }
 
 /**

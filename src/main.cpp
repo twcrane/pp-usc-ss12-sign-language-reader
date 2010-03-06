@@ -147,14 +147,13 @@ int main()
 
 	//char fname[50]={0};
 	int counter=0;
-	cvSaveImage("BGImage.bmp",bgMean);
 	float old_class=-2.0f;
 
 	//
 	GUI gui;
 
-	cvMoveWindow("OrigImage",360,0);
-	cvMoveWindow("CalculatedImage",700,220);
+	cvMoveWindow("OrigImage",100,0);
+	cvMoveWindow("CalculatedImage",200,220);
 
 	while( 1 ) 
 	{
@@ -205,9 +204,7 @@ int main()
 
 	cvDestroyWindow( "CalculatedImage" );
 	cvDestroyWindow( "OrigImage" );
-	cvDestroyWindow( "BGMEAN" );
 
-    cout << "!!!Hello World!!!" << endl;
     return 0;
 }
 

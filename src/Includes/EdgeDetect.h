@@ -18,10 +18,12 @@ public:
 	 *
 	 */
 	IplImage* detect(IplImage* InputImage){
+		cout<< "detect\n";
 		// Do the detection and return the detected image
 		IplImage* Dest = cvCreateImage(cvSize(InputImage->width,InputImage->height),IPL_DEPTH_8U,1);
 		cvCanny(InputImage,Dest,0.5,1);
 		cvReleaseImage(&InputImage);
+		cout<< "out of detect\n";
 		return Dest;
 	}
 	/**

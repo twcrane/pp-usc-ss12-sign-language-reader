@@ -20,7 +20,6 @@ class FolderReader : public InputReader {
 		DIR *ClassDir;
 
 public:
-	int Max_K;
 	FolderReader(string);
 	/**
 	 * Read all the directories in
@@ -42,6 +41,7 @@ public:
 	 * Returns Number Of Images
 	 */
 	int numberofimages();
+	int k(){return ClassDirs.size();}
 	~FolderReader(){};
 };
 
