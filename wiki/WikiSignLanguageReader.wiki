@@ -22,7 +22,7 @@ Sign language is used all over the world by the hearing-impaired to communicate 
 ==Existing SLR Database==
 ------------------------------------------------------------------------------------------
 
-||http://i49.tinypic.com/35mjmmp.jpg  ||                    *ONE*                  ||
+||http://i49.tinypic.com/35mjmmp.jpg  ||&nbsp; *ONE*                  ||
 ||http://i50.tinypic.com/21davr.jpg   ||                    *TWO*                  ||
 ||http://i48.tinypic.com/od1g4.jpg    ||                    *THREE*                ||
 ||http://i45.tinypic.com/1183j94.jpg  ||                    *FOUR*                 ||
