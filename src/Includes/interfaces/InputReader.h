@@ -9,10 +9,10 @@ using namespace std;
 class InputReader{
 
 public:
-	virtual IplImage* next(int&){};
+	virtual IplImage* next(int&){return NULL;};
 	virtual void reset(){};
 	virtual void end(){};
-	virtual int numberofimages(){};
+	virtual int numberofimages(){return 0;};
 };
 
 #endif
