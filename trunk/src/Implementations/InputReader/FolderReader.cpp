@@ -7,6 +7,7 @@
 	FolderReader::FolderReader(string dirname){
 		Directory = dirname;
 		// Open that directory
+		cout << getenv("PWD") << endl;
 		RootDir = opendir(dirname.c_str());
 		if (!RootDir)
 			cout << " Failed to Open the Directory : " << dirname;
@@ -42,18 +43,28 @@
 	 * Go to Next Class
 	 */
 	bool FolderReader::nextClass(){
+		cout << "nextclass\n";
+		cout << __FILE__ << __LINE__ << endl;
 		// Close the Current Directory
 		if (ClassDir)
 		{
 			closedir(ClassDir);
 			ClassDir = NULL;
 		}
+		cout << __FILE__ << __LINE__ << endl;
 		// Open the new Directory
 		curClass ++ ;
-		if (curClass >= (int)ClassDirs.size())
+		cout << __FILE__ << __LINE__ << endl;
+		cout << curClass << endl;
+
+		if (curClass >= ClassDirs.size())
 			return false;
 
+		cout << __FILE__ << __LINE__ << endl;
+		cout << curClass<< "-" << ClassDirs.size() << "-" << ClassDirs[curClass].c_str() << endl;
 		ClassDir = opendir(ClassDirs[curClass].c_str());
+
+		cout << __FILE__ << __LINE__ << endl;
 		if(!ClassDir)
 			return false;
 		else
@@ -63,17 +74,31 @@
 	 * next image from the list
 	 */
 	IplImage* FolderReader::next(int &ClassNumber){
+		cout << __FILE__ << __LINE__ << endl;
+
 		struct dirent *d_entry;
 		// Iterate and retrive the next non ., .. or .DS_STORE file
+		cout << __FILE__ << __LINE__ << endl;
 		do {
 			d_entry=readdir(ClassDir);
-			if (d_entry == NULL && !nextClass())
-				return NULL;
+			cout << __FILE__ << __LINE__ << endl;
+			if (d_entry == NULL){
+				if(!nextClass())
+				{
+					cout << __FILE__ << __LINE__ << endl;
+					return NULL;
+				}
+				d_entry = readdir(ClassDir);
+			}
 		}while (strcmp(d_entry->d_name,".DS_Store")==0 || strcmp(d_entry->d_name,".") == 0 || strcmp(d_entry->d_name,"..") == 0);
+
+		cout << __FILE__ << __LINE__ << endl;
 
 		string Temp = ClassDirs[curClass];
 		Temp += "/";
 		Temp += d_entry->d_name;
+
+		cout << __FILE__ << __LINE__ << endl;
 
 		// Open Image Preprocess it and return it.
 		IplImage *im_gray = cvLoadImage(Temp.c_str(),0);
@@ -82,7 +107,12 @@
 		cvResize(im_gray,resized,0);
 		cvReleaseImage(&im_gray);
 
+		cout << __FILE__ << __LINE__ << endl;
+
 		ClassNumber = atoi(ClassDirs[curClass].c_str());
+		cout << "OutofNext\n";
+
+		cout << __FILE__ << __LINE__ << endl;
 		return resized;
 	}
 	/**

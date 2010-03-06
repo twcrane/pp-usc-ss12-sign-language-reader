@@ -6,6 +6,8 @@
 	 * Train the Image
 	 */
 	void KNN::train(CvMat* Matrix, CvMat* Labels){
+
+		cout << Max_K <<endl;
 			Knearest.train(Matrix,Labels,NULL,false,Max_K,false);
 	}
 	/**
@@ -13,6 +15,8 @@
 	 */
 	float KNN::test(IplImage *Image)
 	{
+		cout << __FILE__<<"-"<<__LINE__ << endl;
+
 		// Process the Image
 		IplImage *tempImg = cvCreateImage(cvSize(Image->width,Image->height),8,1);
 		cvCvtColor(Image,tempImg,CV_BGR2GRAY);
@@ -24,10 +28,12 @@
 		cvReleaseImage(&tempImg);
 
 		// flatten it
-		for (int i=0; i< tempImg->height; i++)
-			for (int j=0; j< tempImg->width; j++)
+		for (int i=0; i< resized->height; i++)
+			for (int j=0; j< resized->width; j++)
 				cvSet2D(Sample,0,i*resized->width + j,cvGet2D(resized,i,j));
 
+
+		cout << __FILE__<<"-"<<__LINE__ << endl;
 		// test it
 		return Knearest.find_nearest(Sample,1);
 	}
