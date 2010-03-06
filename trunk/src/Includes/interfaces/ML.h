@@ -12,7 +12,7 @@ public:
 
 	virtual void create(int){};
 	virtual void train(CvMat*,CvMat*){};
-	virtual float test(IplImage*){};
+	virtual float test(IplImage*){return 0;};
 
 	virtual void save(string){};
 	virtual void load(string){};

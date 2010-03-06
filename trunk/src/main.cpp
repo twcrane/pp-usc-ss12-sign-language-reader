@@ -3,6 +3,7 @@
 #include "EdgeDetect.h"
 #include "Training.h"
 #include "FolderReader.h"
+#include "GUI.h"
 
 using namespace std;
 
@@ -33,78 +34,6 @@ int checkBlack(IplImage *src,int x,int y)
 	int th=-128;
 	return !((int)PIXEL(src,x,y,0)==th && (int)PIXEL(src,x,y,1)==th && (int)PIXEL(src,x,y,2)==th);
 
-}
-
-void BlobDetect(IplImage *src,IplImage **dest)
-{
-	int minX=-1,minY=-1,maxX=-1,maxY=-1;
-	/* Firs rectangle */
-	int flag=0;
-	IplImage *thisFrame = src;
-
-	for(int x=0; x<thisFrame->width && !flag; ++x)
-	{
-		for(int y=0; y<thisFrame->height && !flag; ++y)
-		{
-			if(checkBlack(thisFrame,x,y))
-			{
-				minX = x;
-				flag=1;
-			}
-		}
-	}
-
-	if(flag==0)
-	{
-		*dest = cvCreateImage(cvGetSize(src),src->depth,src->nChannels);
-		cvCopy(src,dest,0);
-		printf("maa ka bhosda %d %d %d %d",minX,minY,minX,minX);
-		return;
-	}
-
-	//MaxY
-	for(int x=thisFrame->width-1,flag=0; x>=0 && !flag; --x)
-	{
-		for(int y=0; y<thisFrame->height && !flag; ++y)
-		{
-			if(checkBlack(thisFrame,x,y))
-			{
-				maxX = x;
-				flag=1;
-			}
-		}
-	}
-
-	//MaxY
-	for(int y=thisFrame->height-1,flag=0; y>=0 && !flag; --y)
-	{
-		for(int x=0; x<thisFrame->width && !flag; ++x)
-		{
-			if(checkBlack(thisFrame,x,y))
-			{
-				maxY = y;
-				flag=1;
-			}
-		}
-	}
-
-	//MinY
-	for(int y=0,flag=0; y<thisFrame->height && !flag; ++y)
-	{
-		for(int x=0; x<thisFrame->width && !flag; ++x)
-		{
-			if(checkBlack(thisFrame,x,y))
-			{
-				minY = y;
-				flag=1;
-			}
-		}
-	}
-	cvSetImageROI(src,cvRect(minX,minY,maxX-minX+1,maxY-minY+1));
-
-	*dest = cvCreateImage(cvSize(maxX-minX,maxY-minY),src->depth,src->nChannels);
-
-	cvResize(src,*dest,0);
 }
 
 #define EPSILON 1e-9
@@ -163,8 +92,16 @@ void OverlayImg(IplImage* RawImg, IplImage *SilhImg)
 int main() 
 {
 
+	cout << "Folder Reader \n";
+	FolderReader *fd = new FolderReader("Data");
+	cout << "Edge Detect \n";
+	EdgeDetect *ed = new EdgeDetect();
+	cout << "KNN \n";
+	KNN *knn = new KNN();
+
 	// Create a training instance.
-	Training *training = new Training(new FolderReader("Data"),new EdgeDetect(),new KNN());
+	cout << "Training\n";
+	Training *training = new Training(fd,ed,knn);
     cout << "Training Complete\n";
 
 	//
@@ -200,33 +137,22 @@ int main()
 		}
 	}
 	bgMean = cvCreateImage(cvSize(bgMean2->width,bgMean2->height),bgMean2->depth,bgMean2->nChannels);
-	//
-	printf("\nDone");
 	cvCopy(bgMean2,bgMean);
     // Create a window in which the captured images will be presented
     cvNamedWindow( "OrigImage", CV_WINDOW_AUTOSIZE );
 	cvNamedWindow( "CalculatedImage", CV_WINDOW_AUTOSIZE );
 
 	IplImage *changeMask=cvCreateImage(cvSize(bgMean->width,bgMean->height),bgMean->depth,bgMean->nChannels),*curr_img;
-	IplImage *resize_img = cvCreateImage(cvSize(bgMean->width/10,bgMean->height/10),bgMean->depth,bgMean->nChannels);
+	//IplImage *resize_img = cvCreateImage(cvSize(bgMean->width/10,bgMean->height/10),bgMean->depth,bgMean->nChannels);
 
-	char fname[50]={0};
+	//char fname[50]={0};
 	int counter=0;
 	cvSaveImage("BGImage.bmp",bgMean);
 	float old_class=-2.0f;
-	IplImage* img_GUI[6];
 
-	img_GUI[0]= cvLoadImage( "GUI/GUI1.jpg" );
-	img_GUI[1]= cvLoadImage( "GUI/GUI2.jpg" );
-	img_GUI[2]= cvLoadImage( "GUI/GUI3.jpg" );
-	img_GUI[3]= cvLoadImage( "GUI/GUI4.jpg" );
-	img_GUI[4]= cvLoadImage( "GUI/GUI5.jpg" );
-	img_GUI[5]= cvLoadImage( "GUI/GUI6.jpg" );
+	//
+	GUI gui;
 
-	cvNamedWindow("IconPane",CV_WINDOW_AUTOSIZE);
-
-	cvShowImage("IconPane",img_GUI[0]);
-	cvMoveWindow("IconPane",0,0);
 	cvMoveWindow("OrigImage",360,0);
 	cvMoveWindow("CalculatedImage",700,220);
 
@@ -263,7 +189,8 @@ int main()
 				cout<<"Detected = "<<class_detected<<endl;
 
 				if(temp2>=1 && temp2<=5)
-					cvShowImage("IconPane",img_GUI[temp2]);
+					gui.showImage(temp2);
+
 				cvWaitKey(1);
 			}
 			old_class=class_detected;

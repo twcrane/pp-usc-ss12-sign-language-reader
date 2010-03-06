@@ -1,12 +1,15 @@
 #include "FolderReader.h"
 
 
+/**
+ * folder reader constructor
+ */
 	FolderReader::FolderReader(string dirname){
 		Directory = dirname;
 		// Open that directory
 		RootDir = opendir(dirname.c_str());
 		if (!RootDir)
-					cout << " Failed to Open the Directory : " << dirname;
+			cout << " Failed to Open the Directory : " << dirname;
 		// Change Directory
 		chdir(dirname.c_str());
 		// Read all the directories
@@ -47,7 +50,7 @@
 		}
 		// Open the new Directory
 		curClass ++ ;
-		if (curClass >= ClassDirs.size())
+		if (curClass >= (int)ClassDirs.size())
 			return false;
 
 		ClassDir = opendir(ClassDirs[curClass].c_str());
@@ -61,7 +64,6 @@
 	 */
 	IplImage* FolderReader::next(int &ClassNumber){
 		struct dirent *d_entry;
-
 		// Iterate and retrive the next non ., .. or .DS_STORE file
 		do {
 			d_entry=readdir(ClassDir);
@@ -107,22 +109,23 @@
 	int FolderReader::numberofimages(){
 
 		int filecount = 0, temp = 0;
-		FILE *in;
 
-		in = popen("ls -l | wc -l", "r");
-		fscanf(in, "%d", &Max_K);
-		pclose(in);
-
-		for(int i= 0; i< ClassDirs.size(); i++){
-
-			 chdir(ClassDirs[i].c_str());
-			  in = popen("ls -l | wc -l", "r");
-			  fscanf(in, "%d", &temp);
-			  pclose(in);
-
-			  filecount += temp - 2;
-			  temp = 0;
-			 chdir("..");
+		DIR* temp_dir;
+		struct dirent* dir_entry;
+		/// Start diving into the directories and counting the files
+		for (int i=0; i<(int)ClassDirs.size(); i++)
+		{
+			temp_dir = opendir(ClassDirs[i].c_str());
+			chdir(ClassDirs[i].c_str());
+			while((dir_entry=readdir(temp_dir))!=NULL){
+				if (strcmp(dir_entry->d_name,".")!=0 && strcmp(dir_entry->d_name,"..")!=0)
+				{
+					cout << dir_entry->d_name << endl;
+					filecount ++;
+				}
+			}
+			chdir("..");
+			closedir(temp_dir);
 		}
 
 		return filecount;

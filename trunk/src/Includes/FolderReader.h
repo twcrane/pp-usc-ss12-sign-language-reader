@@ -42,6 +42,7 @@ public:
 	 * Returns Number Of Images
 	 */
 	int numberofimages();
+	~FolderReader(){};
 };
 
 #endif

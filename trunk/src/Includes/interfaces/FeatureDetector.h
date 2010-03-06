@@ -8,7 +8,7 @@ class FeatureDetector{
 
 public:
 	//
-	virtual IplImage* detect(IplImage*){};
+	virtual IplImage* detect(IplImage*){ return NULL;};
 	virtual void load(){};
 
 };
