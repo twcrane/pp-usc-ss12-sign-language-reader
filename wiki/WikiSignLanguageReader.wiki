@@ -10,6 +10,10 @@ A sign language is a language which, instead of acoustically conveyed sound patt
   * Speech impaired people can use to communicate by adding a Text to Speech Feature to communicate  over VOIP.
   * Elderly people for convenience.
 
+== Demo ==
+------------------------------------------------------------------------------------------
+<wiki:video url="http://www.youtube.com/watch?v=3I_mQcfEX2U"/>
+
 == Features ==
 ------------------------------------------------------------------------------------------
 
