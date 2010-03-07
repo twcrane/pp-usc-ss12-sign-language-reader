@@ -57,12 +57,12 @@ http://i45.tinypic.com/2lo4s4i.jpg
 ==References==
 ------------------------------------------------------------------------------------------
 Grover D., "Real-Time Tracking and analysis of Drosophilia behavior and gene expression". University of Southern California 2009.
- 
+[]
 OpenCV (Open Source Computer Vision) is a library of programming functions for real time computer vision. 
-  *[http://opencv.willowgarage.com/wiki
+  *[http://opencv.willowgarage.com/wiki]
 
 American Sign Language Linguistic Research Project
-  *[http://www.bu.edu/asllrp/
+  *[http://www.bu.edu/asllrp/]
 
 
 ==Team Members==
