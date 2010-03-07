@@ -56,13 +56,13 @@ http://i45.tinypic.com/2lo4s4i.jpg
 
 ==References==
 ------------------------------------------------------------------------------------------
-Grover D., "Real-Time Tracking and analysis of Drosophilia behavior and gene expression". University of Southern California 2009.
-[]
-OpenCV (Open Source Computer Vision) is a library of programming functions for real time computer vision. 
-  *[http://opencv.willowgarage.com/wiki]
+*Grover D., "Real-Time Tracking and analysis of Drosophilia behavior and gene expression". University of Southern California 2009.
 
-American Sign Language Linguistic Research Project
-  *[http://www.bu.edu/asllrp/]
+*OpenCV (Open Source Computer Vision) is a library of programming functions for real time computer vision. 
+  #[http://opencv.willowgarage.com/wiki]
+
+*American Sign Language Linguistic Research Project
+  #[http://www.bu.edu/asllrp/]
 
 
 ==Team Members==
@@ -70,7 +70,7 @@ American Sign Language Linguistic Research Project
 
   * Mentor: Ojas Mulay: ojasmulay at gmail dot com
 
-  * Anurag Biyani: biyani at usc dot edu
+  * [http://www.anuragbiyani.info Anurag Biyani]: biyani at usc dot edu
   * Parth Patel: parthpat at usc dot edu 
   * Prakhar Garg: gargp at usc dot edu
   * Mayank Misra: mmisra at usc dot edu
