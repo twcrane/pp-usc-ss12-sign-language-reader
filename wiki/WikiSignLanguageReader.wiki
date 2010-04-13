@@ -14,6 +14,7 @@ A sign language is a language which, instead of acoustically conveyed sound patt
 ------------------------------------------------------------------------------------------
 <wiki:video url="http://www.youtube.com/watch?v=3I_mQcfEX2U"/>
 
+Please see a high resolution video [http://www.anuragbiyani.info/SLRVideo.swf here].
 == Features ==
 ------------------------------------------------------------------------------------------
 
